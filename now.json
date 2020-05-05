@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "build": {
+    "env": {
+      "google_analytics": "@google_analytics",
+      "contentful_space_id": "@contentful_space_id",
+      "contentful_access_token": "@contentful_access_token"
+    }
+  }
+}

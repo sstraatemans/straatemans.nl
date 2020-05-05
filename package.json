@@ -1,0 +1,12 @@
+{
+  "name": "straatemans",
+  "description": "My own website",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zeit/now/tree/master/examples/nextjs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
