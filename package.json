@@ -6,8 +6,7 @@
     "url": "https://github.com/zeit/now/tree/master/examples/nextjs"
   },
   "scripts": {
-    "dev": "parcel watch index.html",
-    "start": "parcel index.html",
+    "start": "parcel ./public/index.html",
     "build": "parcel build index.html"
   },
   "type": "module",
