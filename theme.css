@@ -1,0 +1,35 @@
+ul.social {
+  display: flex;
+  justify-content: space-around;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+ul.social li.spacer {
+  flex: 1;
+}
+
+ul.social li {
+  margin: 24px;
+}
+
+ul.social li a {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  border-radius: 100%;
+  background-color: transparent;
+  fill: #c4c4c4;
+  width: 80px;
+  height: 80px;
+  padding: 10px;
+  transition: background-color 0.5s, fill 0.5s, transform 0.5s ease-out;
+}
+
+ul.social li a:hover {
+  border-radius: 100%;
+  transform: scale(1.25);
+  background-color: #c4c4c4;
+  fill: white;
+}
