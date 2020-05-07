@@ -1,4 +1,4 @@
-import * as Rubberband from './rubberBand';
+import * as Rubberband from '../src/rubberBand';
 
 window.onload = () => {
   Rubberband.init();
