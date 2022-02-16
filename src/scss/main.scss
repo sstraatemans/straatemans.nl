@@ -1,0 +1,19 @@
+@import './variables.scss';
+
+html {
+  font-size: 10px;
+  background: $background-color;
+}
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: $font-color-primary;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  margin: 0;
+}

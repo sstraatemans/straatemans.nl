@@ -1,0 +1,31 @@
+@import './variables.scss';
+
+.rollwrapper {
+  .roll {
+    font-weight: bold;
+  }
+
+  .caret {
+    display: none;
+    position: absolute;
+    top: 2rem;
+    right: -1rem;
+    border: 0;
+    background: transparent;
+    width: clamp(3rem, 4vw, 3.5rem);
+    cursor: pointer;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .roll {
+      text-decoration: underline;
+      text-decoration-thickness: 7%;
+    }
+
+    .caret {
+      display: block;
+    }
+  }
+}

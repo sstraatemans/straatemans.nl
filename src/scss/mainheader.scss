@@ -1,0 +1,31 @@
+@import './variables.scss';
+
+main {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: 1fr min-content min-content 1fr;
+  grid-template-areas:
+    '. aside'
+    'header aside'
+    'main aside'
+    '. aside';
+
+  max-width: 1000px;
+  margin: 0 auto;
+
+  .header {
+    grid-area: header;
+    font-size: clamp(1rem, 4vw, 4rem);
+  }
+
+  .aside {
+    grid-area: aside;
+  }
+
+  .text {
+    grid-area: main;
+    position: relative;
+    margin: 0;
+    font-size: clamp(1.5rem, 5vw, 5rem);
+  }
+}

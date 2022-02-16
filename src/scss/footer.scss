@@ -1,0 +1,37 @@
+@import './variables.scss';
+
+ul {
+  &.social {
+    display: flex;
+    justify-content: space-around;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+
+    li {
+      margin: clamp(1rem, 4vw, 3rem);
+
+      .spacer {
+        flex: 1;
+      }
+
+      a {
+        box-sizing: border-box;
+        display: block;
+        position: relative;
+        border-radius: 100%;
+        background-color: transparent;
+        fill: $footer-icon-color;
+        width: clamp(4rem, 8vw, 7rem);
+        transition: background-color 0.5s, fill 0.5s, transform 0.5s ease-out;
+
+        &:hover {
+          border-radius: 100%;
+          transform: scale(1.25);
+          background-color: $footer-icon-color;
+          fill: white;
+        }
+      }
+    }
+  }
+}
