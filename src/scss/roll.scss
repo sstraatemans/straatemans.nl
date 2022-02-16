@@ -1,8 +1,40 @@
 @import './variables.scss';
 
+@mixin animate($animation, $duration, $method, $times) {
+  animation: $animation $duration $method $times;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+.rollanimation {
+}
+
 .rollwrapper {
   .roll {
+    display: inline-flex;
+    flex-direction: column;
     font-weight: bold;
+    height: clamp(2rem, 6vw, 6rem);
+    overflow: hidden;
+
+    .wrapper {
+      &.new {
+        @include keyframes(roll) {
+          0% {
+            transform: translateY(0%);
+          }
+
+          100% {
+            transform: translateY(-50%);
+          }
+        }
+        @include animate(roll, 0.4s, linear, 1);
+      }
+    }
   }
 
   .caret {
