@@ -28,5 +28,10 @@
     "id": "6",
     "labelStart": "beginning",
     "labelEnd": "guitarist"
+  },
+  {
+    "id": "7",
+    "labelStart": "fanatic",
+    "labelEnd": "frontend developer"
   }
 ]
