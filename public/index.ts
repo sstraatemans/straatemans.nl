@@ -1,7 +1,7 @@
 import data from './../src/data/index.json';
 
 const importedData: Data = data;
-const CHARACTER_DURATION = 1000;
+const CHARACTER_DURATION = 5000;
 let CHARACTER_COUNT = 0;
 
 const parts: Part[] = [];
