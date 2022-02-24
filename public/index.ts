@@ -4,6 +4,15 @@ const importedData: Data = data;
 const CHARACTER_DURATION = 1000;
 let CHARACTER_COUNT = 0;
 let PARTS_COUNT = 0;
+let ANIMATION_COUNT = 0;
+
+const parts: Part[] = [];
+const addPart = (elm: Element, label: string) => {
+  parts.push({
+    elm,
+    label,
+  });
+};
 
 const getCharacterCount = () => {
   if (CHARACTER_COUNT + 1 >= importedData.length) {
@@ -13,45 +22,60 @@ const getCharacterCount = () => {
   return CHARACTER_COUNT++;
 };
 
-const createRoll = (part: Element, label: string, count: number = 0) => {
-  let wrapper = document.createElement('div');
-  wrapper.classList.add('wrapper');
+const createRoll = (part: Element, label: string) => {
+  return new Promise<void>((resolve) => {
+    let wrapper = document.createElement('div');
+    wrapper.classList.add('wrapper');
 
-  const currentText = document.createElement('div');
-  currentText.innerText = part.innerHTML;
-  const nextText = document.createElement('div');
-  nextText.innerText = importedData[CHARACTER_COUNT][label];
+    const currentText = document.createElement('div');
+    currentText.innerText = part.innerHTML;
+    const nextText = document.createElement('div');
+    nextText.innerText = importedData[CHARACTER_COUNT][label];
 
-  part.replaceChildren(wrapper);
-  wrapper.appendChild(currentText);
-  wrapper.appendChild(nextText);
+    part.replaceChildren(wrapper);
+    wrapper.appendChild(currentText);
+    wrapper.appendChild(nextText);
 
-  if (count === PARTS_COUNT) {
-    getCharacterCount();
-  }
+    wrapper.addEventListener('animationend', () => {
+      part.innerHTML = nextText.innerText;
+      wrapper.classList.remove('new');
+      wrapper = null;
 
-  wrapper.addEventListener('animationend', () => {
-    part.innerHTML = nextText.innerText;
-    wrapper.classList.remove('new');
-    wrapper = null;
+      ANIMATION_COUNT++;
+      if (ANIMATION_COUNT < PARTS_COUNT) return;
+
+      ANIMATION_COUNT = 0;
+      getCharacterCount();
+
+      resolve();
+    });
 
     setTimeout(() => {
-      createRoll(part, label, count);
+      wrapper.classList.add('new');
+    }, 0);
+  });
+};
+
+const animateParts = (parts: Part[]) => {
+  const animations = parts.map((part) => {
+    return createRoll(part.elm, part.label);
+  });
+  Promise.all(animations).then((values) => {
+    setTimeout(() => {
+      animateParts(parts);
     }, CHARACTER_DURATION);
   });
-
-  setTimeout(() => {
-    wrapper.classList.add('new');
-  }, 500);
 };
 
 const initRoll = () => {
-  const parts = document.querySelectorAll('.roll');
+  const partelems = document.querySelectorAll('.roll');
   PARTS_COUNT = parts.length;
 
   setTimeout(() => {
-    createRoll(parts[0], 'labelStart', 1);
-    createRoll(parts[1], 'labelEnd', 2);
+    addPart(partelems[0], 'labelStart');
+    addPart(partelems[1], 'labelEnd');
+
+    animateParts(parts);
   }, CHARACTER_DURATION);
 };
 

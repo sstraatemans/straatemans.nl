@@ -6,3 +6,8 @@ type Role = {
 };
 
 type Data = Role[];
+
+type Part = {
+  elm: Element;
+  label: string;
+};
