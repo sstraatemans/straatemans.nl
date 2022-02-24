@@ -31,7 +31,6 @@ const createRoll = (part: Element, label: string, count: number = 0) => {
   }
 
   wrapper.addEventListener('animationend', () => {
-    console.log('end tssssransition');
     part.innerHTML = nextText.innerText;
     wrapper.classList.remove('new');
     wrapper = null;
@@ -43,7 +42,7 @@ const createRoll = (part: Element, label: string, count: number = 0) => {
 
   setTimeout(() => {
     wrapper.classList.add('new');
-  }, 0);
+  }, 500);
 };
 
 const initRoll = () => {
