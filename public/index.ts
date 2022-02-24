@@ -3,8 +3,6 @@ import data from './../src/data/index.json';
 const importedData: Data = data;
 const CHARACTER_DURATION = 1000;
 let CHARACTER_COUNT = 0;
-let PARTS_COUNT = 0;
-let ANIMATION_COUNT = 0;
 
 const parts: Part[] = [];
 const addPart = (elm: Element, label: string) => {
@@ -41,10 +39,6 @@ const createRoll = (part: Element, label: string) => {
       wrapper.classList.remove('new');
       wrapper = null;
 
-      ANIMATION_COUNT++;
-      if (ANIMATION_COUNT < PARTS_COUNT) return;
-
-      ANIMATION_COUNT = 0;
       getCharacterCount();
 
       resolve();
@@ -69,7 +63,6 @@ const animateParts = (parts: Part[]) => {
 
 const initRoll = () => {
   const partelems = document.querySelectorAll('.roll');
-  PARTS_COUNT = parts.length;
 
   setTimeout(() => {
     addPart(partelems[0], 'labelStart');
