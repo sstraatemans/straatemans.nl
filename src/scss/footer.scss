@@ -16,20 +16,20 @@ ul {
       }
 
       a {
-        box-sizing: border-box;
-        display: block;
-        position: relative;
-        border-radius: 100%;
-        background-color: transparent;
-        fill: $footer-icon-color;
-        width: clamp(4rem, 8vw, 7rem);
-        transition: background-color 0.5s, fill 0.5s, transform 0.5s ease-out;
+        boxSizing: 'border-box',
+        display: 'block',
+        position: 'relative',
+        borderRadius: '100%',
+        background-color: 'transparent',
+        fill: '#c4c4c4',
+        width: 'clamp(4rem, 8vw, 7rem)',
+        transition: 'background-color 0.5s, fill 0.5s, transform 0.5s ease-out',
 
-        &:hover {
-          border-radius: 100%;
-          transform: scale(1.25);
-          background-color: $footer-icon-color;
-          fill: white;
+        '&:hover': {
+          borderRadius: '100%',
+          transform: 'scale(1.25)',
+          background-color: '#c4c4c4',
+          fill: 'white'
         }
       }
     }
