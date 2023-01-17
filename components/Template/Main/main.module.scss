@@ -1,0 +1,35 @@
+.main {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: 1fr min-content min-content 1fr;
+  grid-template-areas:
+    '. aside'
+    'head aside'
+    'main aside'
+    '. aside';
+  width: 100%;
+
+  .header {
+    grid-area: head;
+    font-weight: 300;
+    font-style: normal;
+    font-size: clamp(0.625rem, 4vw, 2.5rem);
+  }
+
+  .subheader {
+    grid-area: main;
+    position: relative;
+    margin: 0;
+    font-size: clamp(0.9375rem, 5vw, 3.125rem);
+  }
+
+  .aside {
+    grid-area: aside;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

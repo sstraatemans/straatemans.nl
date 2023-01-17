@@ -1,3 +1,3 @@
-export * from './Wrapper';
-export * from './Main';
-export * from './Footer';
+export * from './Wrapper/Wrapper';
+export * from './Main/Main';
+export * from './Footer/Footer';

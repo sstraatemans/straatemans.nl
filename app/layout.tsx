@@ -1,4 +1,4 @@
-import { getCssText, globalCss, lato } from '../ stitches.config';
+import { lato } from '../ stitches.config';
 import {
   Footer,
   Footerlist,
@@ -6,27 +6,18 @@ import {
   FooterListSpacer,
   Wrapper,
 } from '../components';
+import './global.module.scss';
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  globalCss({
-    html: {
-      fontSize: '10px',
-    },
-  });
-
   return (
     <html className={lato.className}>
       <head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <link rel="icon" href="/favicon.ico" />
-        <style
-          id="stitches"
-          dangerouslySetInnerHTML={{ __html: getCssText() }}
-        />
       </head>
       <body>
         <Wrapper>{children}</Wrapper>

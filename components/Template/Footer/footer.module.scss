@@ -1,0 +1,29 @@
+.footerlist {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li.listitem {
+  margin: clamp(0.625rem, 4vw, 1.875rem);
+
+  a {
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    border-radius: 100%;
+    background-color: transparent;
+    fill: #c4c4c4;
+    width: clamp(2.5rem, 8vw, 4.325rem);
+    transition: background-color 0.5s, fill 0.5s, transform 0.5s ease-out;
+
+    &:hover {
+      border-radius: 100%;
+      transform: scale(1.25);
+      background-color: #c4c4c4;
+      fill: white;
+    }
+  }
+}
