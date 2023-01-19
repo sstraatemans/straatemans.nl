@@ -12,7 +12,3 @@ export const Header: FC<PropsWithChildren> = ({ children }) => (
 export const Subheader: FC<PropsWithChildren> = ({ children }) => (
   <p className={styles.subheader}>{children}</p>
 );
-
-export const Aside: FC<PropsWithChildren> = ({ children }) => (
-  <aside className={styles.aside}>{children}</aside>
-);

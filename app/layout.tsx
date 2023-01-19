@@ -6,7 +6,7 @@ import {
   FooterListSpacer,
   Wrapper,
 } from '../components';
-import './global.module.scss';
+import styles from './global.module.scss';
 
 export default function RootLayout({
   children,
@@ -14,12 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className={lato.className}>
+    <html className={lato.className} lang="en">
       <head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body>
+      <body className={styles.body}>
         <Wrapper>{children}</Wrapper>
         <Footer>
           <Footerlist>

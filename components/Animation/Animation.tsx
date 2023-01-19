@@ -1,54 +1,113 @@
 'use client';
 
-import { FC, useEffect, useState, useRef } from 'react';
+import {
+  FC,
+  useEffect,
+  useState,
+  useRef,
+  PropsWithChildren,
+  forwardRef,
+} from 'react';
 import Typewriter from 'typewriter-effect/dist/core';
+import { Subheader } from '../Template';
+import styles from './animation.module.scss';
+import Image from 'next/image';
+import classnames from 'classnames';
 
 type IAnimation = {
   label: string;
+  image: string;
 };
 
 const data: IAnimation[] = [
   {
-    label: 'mighty pirate',
+    label: 'mighty<br/>pirate',
+    image: 'pirate',
   },
   {
-    label: 'reluctant runner',
+    label: 'dad',
+    image: 'isanora',
   },
   {
-    label: 'freelance frontend developer',
+    label: 'husband',
+    image: 'nicole',
+  },
+  {
+    label: 'reluctant<br/>runner',
+    image: 'runner',
+  },
+  {
+    label: 'guitarist',
+    image: 'guitarist',
+  },
+  {
+    label: 'developer',
+    image: 'developer',
   },
 ];
+
+const updateIdx = (idx: number) => (idx === data.length - 1 ? 0 : ++idx);
+
+export const Aside = forwardRef<HTMLDivElement, PropsWithChildren>(
+  ({ children }, ref) => (
+    <aside ref={ref} className={styles.aside}>
+      {children}
+    </aside>
+  ),
+);
+Aside.displayName = 'Aside';
+
 export const Animation: FC = () => {
-  const [anim, setAnim] = useState<IAnimation>(data[0]);
+  const [animIdx, setAnimIdx] = useState<number>(0);
   const ref = useRef(null);
-  // const typewriter = useRef();
+  const imageRef = useRef<HTMLDivElement>(null);
+  const typewriter = useRef<any>();
 
   useEffect(() => {
-    if (ref.current) {
-      var customNodeCreator = function (character: string) {
-        return document.createTextNode(character);
-      };
+    typewriter.current = new Typewriter(ref.current) as unknown as any;
+  }, []);
 
-      console.log(ref);
-      const typewriter = new Typewriter(ref.current, {
-        onCreateTextNode: customNodeCreator,
-      }) as unknown as any;
-
-      typewriter
-        ?.typeString(anim.label)
-        .pauseFor(2500)
-        .deleteAll()
-        .pauseFor(300)
-        .callFunction(() => {
-          setAnim(data[1]);
-        })
-        .start();
-    }
-  }, [ref, anim]);
+  useEffect(() => {
+    typewriter.current
+      ?.typeString(data[animIdx].label)
+      .pauseFor(1000)
+      .callFunction(() => {
+        imageRef.current?.classList.remove(styles.loaded);
+      })
+      .deleteAll()
+      .pauseFor(300)
+      .callFunction(() => {
+        setAnimIdx(updateIdx);
+        imageRef.current?.classList.add(styles.loaded);
+        imageRef.current?.style.setProperty(
+          '--imageName',
+          `url(/assets/images/${data[animIdx].image}.png)`,
+        );
+      })
+      .start();
+  }, [animIdx]);
 
   return (
     <>
-      <span ref={ref}></span>
+      <Subheader>
+        and I&apos;m a <span className={styles.typewriter} ref={ref}></span>
+      </Subheader>
+
+      <Aside ref={imageRef}>
+        {/* <Image
+          alt={data[animIdx].label}
+          ref={imageRef}
+          className={classnames([styles.images])}
+          onLoad={(e) => {
+            console.log(e.target);
+            e.currentTarget.classList.add(styles.loaded);
+          }}
+          src={`/assets/images/${data[animIdx].image}.png`}
+          sizes="100%"
+          width="200"
+          height="250"
+        /> */}
+      </Aside>
     </>
   );
 };

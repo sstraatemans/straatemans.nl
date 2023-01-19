@@ -22,14 +22,4 @@
     margin: 0;
     font-size: clamp(0.9375rem, 5vw, 3.125rem);
   }
-
-  .aside {
-    grid-area: aside;
-    position: relative;
-
-    img {
-      width: 100%;
-      height: auto;
-    }
-  }
 }
