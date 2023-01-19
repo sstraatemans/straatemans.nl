@@ -7,15 +7,14 @@
 }
 
 .aside {
-  --imageName: url(/assets/images/pirate.png);
-
   grid-area: aside;
   position: relative;
-  background-image: var(--imageName);
+  background-image: var(--imageName, url(/assets/images/pirate.png));
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   height: auto;
+
   opacity: 0;
   transition: opacity 1s ease;
 

@@ -7,6 +7,8 @@ import {
   useRef,
   PropsWithChildren,
   forwardRef,
+  Ref,
+  RefObject,
 } from 'react';
 import Typewriter from 'typewriter-effect/dist/core';
 import { Subheader } from '../Template';
@@ -25,11 +27,11 @@ const data: IAnimation[] = [
     image: 'pirate',
   },
   {
-    label: 'dad',
+    label: 'proud<br/>dad',
     image: 'isanora',
   },
   {
-    label: 'husband',
+    label: 'happily<br/>married',
     image: 'nicole',
   },
   {
@@ -37,25 +39,31 @@ const data: IAnimation[] = [
     image: 'runner',
   },
   {
-    label: 'guitarist',
+    label: 'beginning<br/>guitarist',
     image: 'guitarist',
   },
   {
-    label: 'developer',
+    label: 'freelance<br/>frontend developer',
     image: 'developer',
   },
 ];
 
 const updateIdx = (idx: number) => (idx === data.length - 1 ? 0 : ++idx);
 
-export const Aside = forwardRef<HTMLDivElement, PropsWithChildren>(
-  ({ children }, ref) => (
-    <aside ref={ref} className={styles.aside}>
+export const Aside: FC<
+  PropsWithChildren<{ animRef: RefObject<HTMLDivElement> }>
+> = ({ children, animRef }) => {
+  useEffect(() => {
+    const div: HTMLDivElement = animRef?.current as unknown as any;
+
+    div.classList.add(styles.loaded);
+  }, []);
+  return (
+    <aside ref={animRef} className={classnames(styles.aside)}>
       {children}
     </aside>
-  ),
-);
-Aside.displayName = 'Aside';
+  );
+};
 
 export const Animation: FC = () => {
   const [animIdx, setAnimIdx] = useState<number>(0);
@@ -77,12 +85,13 @@ export const Animation: FC = () => {
       .deleteAll()
       .pauseFor(300)
       .callFunction(() => {
-        setAnimIdx(updateIdx);
+        const newIdx = updateIdx(animIdx);
         imageRef.current?.classList.add(styles.loaded);
         imageRef.current?.style.setProperty(
           '--imageName',
-          `url(/assets/images/${data[animIdx].image}.png)`,
+          `url(/assets/images/${data[newIdx].image}.png)`,
         );
+        setAnimIdx(newIdx);
       })
       .start();
   }, [animIdx]);
@@ -93,7 +102,7 @@ export const Animation: FC = () => {
         and I&apos;m a <span className={styles.typewriter} ref={ref}></span>
       </Subheader>
 
-      <Aside ref={imageRef}>
+      <Aside animRef={imageRef}>
         {/* <Image
           alt={data[animIdx].label}
           ref={imageRef}
