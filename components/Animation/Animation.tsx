@@ -6,9 +6,8 @@ import {
   useState,
   useRef,
   PropsWithChildren,
-  forwardRef,
-  Ref,
   RefObject,
+  MutableRefObject,
 } from 'react';
 import Typewriter from 'typewriter-effect/dist/core';
 import { Subheader } from '../Template';
@@ -65,14 +64,18 @@ export const Aside: FC<
   );
 };
 
-export const Animation: FC = () => {
+interface IProps {
+  headerRef: MutableRefObject<null>;
+}
+
+export const Animation: FC<IProps> = ({ headerRef }) => {
   const [animIdx, setAnimIdx] = useState<number>(0);
-  const ref = useRef(null);
+
   const imageRef = useRef<HTMLDivElement>(null);
   const typewriter = useRef<any>();
 
   useEffect(() => {
-    typewriter.current = new Typewriter(ref.current) as unknown as any;
+    typewriter.current = new Typewriter(headerRef.current) as unknown as any;
   }, []);
 
   useEffect(() => {
@@ -98,10 +101,6 @@ export const Animation: FC = () => {
 
   return (
     <>
-      <Subheader>
-        and I&apos;m a <span className={styles.typewriter} ref={ref}></span>
-      </Subheader>
-
       <Aside animRef={imageRef}>
         {/* <Image
           alt={data[animIdx].label}
