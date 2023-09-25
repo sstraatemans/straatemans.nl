@@ -7,6 +7,7 @@ import {
   Wrapper,
 } from '../../components';
 import styles from '../global.module.scss';
+import Script from 'next/script';
 
 export default function RootLayout({
   children,
@@ -69,6 +70,20 @@ export default function RootLayout({
             <FooterListSpacer />
           </Footerlist>
         </Footer>
+
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-FV54NXJCN7"
+        />
+        <Script id="google-analytics">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-FV54NXJCN7');
+        `}
+        </Script>
       </body>
     </html>
   );
