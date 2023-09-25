@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, ReactElement } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import styles from './footer.module.scss';
 
 export const Footer: FC<PropsWithChildren> = ({ children }) => {

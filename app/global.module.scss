@@ -1,3 +1,27 @@
 .body {
   height: 80vh;
 }
+
+.mainheader {
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  margin: 0;
+}
+
+.content {
+  margin: 20px 0;
+}
+
+.image {
+  display: block;
+  margin-inline: auto;
+  text-align: center;
+  @media screen and (min-width: 700px) {
+    margin: auto;
+    float: left;
+    margin-right: 16px;
+  }
+}

@@ -1,6 +1,13 @@
 import { FC, PropsWithChildren } from 'react';
 import styles from './wrapper.module.scss';
+import classNames from 'classnames';
 
-export const Wrapper: FC<PropsWithChildren> = ({ children }) => (
-  <div className={styles.wrapper}>{children}</div>
+interface IProps extends PropsWithChildren {
+  isPage?: boolean;
+}
+
+export const Wrapper: FC<IProps> = ({ children, isPage = false }) => (
+  <div className={classNames(styles.wrapper, isPage ? styles.wrapperpage : '')}>
+    {children}
+  </div>
 );

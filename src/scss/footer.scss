@@ -16,7 +16,7 @@ ul {
       }
 
       a {
-        boxSizing: 'border-box',
+        box-sizing: 'border-box',
         display: 'block',
         position: 'relative',
         borderRadius: '100%',
