@@ -1,6 +1,6 @@
 'use client';
 
-import { Header, Main, Subheader } from '../components';
+import { Header, Main, Subheader, Wrapper } from '../components';
 import styles from '../components/Template/Main/main.module.scss';
 import { Animation } from '../components/Animation/Animation';
 import { useRef } from 'react';
@@ -8,7 +8,7 @@ import { useRef } from 'react';
 export default function Home() {
   const ref = useRef(null);
   return (
-    <>
+    <Wrapper>
       <Main>
         <div className={styles.wrapper}>
           <Header>My name Steven Straatemans</Header>
@@ -18,6 +18,6 @@ export default function Home() {
         </div>
         <Animation headerRef={ref} />
       </Main>
-    </>
+    </Wrapper>
   );
 }

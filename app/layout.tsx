@@ -5,7 +5,6 @@ import {
   Footerlist,
   FooterListItem,
   FooterListSpacer,
-  Wrapper,
 } from '../components';
 import styles from './global.module.scss';
 
@@ -38,7 +37,7 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest"></link>
       </head>
       <body className={styles.body}>
-        <Wrapper>{children}</Wrapper>
+        {children}
         <Footer>
           <Footerlist>
             <FooterListSpacer />
@@ -67,7 +66,6 @@ export default function RootLayout({
             <FooterListSpacer />
           </Footerlist>
         </Footer>
-
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-FV54NXJCN7"
