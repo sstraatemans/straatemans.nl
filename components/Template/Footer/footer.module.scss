@@ -15,8 +15,10 @@ li.listitem {
     position: relative;
     border-radius: 100%;
     background-color: transparent;
+    aspect-ratio: '1/1';
     fill: #c4c4c4;
     width: clamp(2.5rem, 8vw, 4.325rem);
+    height: clamp(2.5rem, 8vw, 4.325rem);
     transition: background-color 0.5s, fill 0.5s, transform 0.5s ease-out;
 
     &:hover {
